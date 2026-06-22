@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Nidhi ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.card{
+background:white;
+width:100%;
+max-width:500px;
+padding:25px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+color:#ff4d6d;
+margin-bottom:15px;
+}
+
+p{
+line-height:1.7;
+margin-bottom:20px;
+}
+
+button{
+background:#ff4d6d;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.page{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+.gifts{
+display:flex;
+gap:15px;
+justify-content:center;
+margin:20px 0;
+flex-wrap:wrap;
+}
+
+.gift{
+border:3px solid transparent;
+border-radius:15px;
+padding:8px;
+cursor:pointer;
+}
+
+.gift img{
+width:180px;
+height:220px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.selected{
+border:3px solid green;
+}
+
+.footer{
+margin-top:20px;
+font-size:14px;
+color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+<h1>🎂 A Special Surprise 🎂</h1>
+
+<p>
+This special birthday surprise was created by <b>Prince</b> for you ❤️
+</p>
+
+<p>
+Hey Nidhi 😊<br><br>
+Aaj tumhara birthday hai aur maine tumhare liye ek chhota sa surprise tayyar kiya hai.
+</p>
+
+<button onclick="nextPage(2)">
+Open My Surprise 🎁
+</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+
+<h1>🎉 Happy Birthday Nidhi 🎉</h1>
+
+<p>
+May your life always be filled with happiness, success,
+beautiful memories and lots of smiles. ✨
+</p>
+
+<p>
+Aaj ka din sirf tumhare liye special hai. ❤️
+</p>
+
+<button onclick="nextPage(3)">
+Continue ➜
+</button>
+
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+
+<h1>🎁 Choose Your Gift</h1>
+
+<p>Select only one gift 😊</p>
+
+<div class="gifts">
+
+<div class="gift" onclick="selectGift(1,this)">
+<img src="gift1.jpg">
+<p>Gift 1</p>
+</div>
+
+<div class="gift" onclick="selectGift(2,this)">
+<img src="gift2.jpg">
+<p>Gift 2</p>
+</div>
+
+</div>
+
+<button onclick="confirmGift()">
+Confirm My Choice
+</button>
+
+</div>
+
+<!-- PAGE 4 -->
+<div id="page4" class="page">
+
+<h1>✅ Gift Confirmed</h1>
+
+<p>
+Thank You Nidhi ❤️
+</p>
+
+<p>
+Your birthday gift has been selected successfully.
+</p>
+
+<p>
+Your gift will reach you soon 🎁✨
+</p>
+
+<p>
+Once Again,<br>
+Happy Birthday 🎂🎉
+</p>
+
+<div class="footer">
+Made with ❤️ by Prince
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let selectedGift = 0;
+
+function nextPage(page){
+
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
+
+document.getElementById('page'+page).classList.add('active');
+}
+
+function selectGift(gift,element){
+
+selectedGift = gift;
+
+document.querySelectorAll('.gift').forEach(g=>{
+g.classList.remove('selected');
+});
+
+element.classList.add('selected');
+}
+
+function confirmGift(){
+
+if(selectedGift===0){
+alert("Please select a gift first 😊");
+return;
+}
+
+let msg =
+selectedGift===1
+? "Hi Prince 😊 I selected Gift 1 🎁"
+: "Hi Prince 😊 I selected Gift 2 🎁";
+
+window.open(
+"https://wa.me/917489566238?text="+encodeURIComponent(msg),
+"_blank"
+);
+
+setTimeout(()=>{
+nextPage(4);
+},1000);
+
+}
+
+</script>
+
+</body>
+</html>
